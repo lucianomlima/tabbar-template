@@ -1,47 +1,30 @@
 /**
  * App2Sales React Native App Template
- * https://github.com/app2sales/a2s-template
+ * https://github.com/lucianomlima/tabbar-template
  * @flow
  */
 
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { Text } from 'react-native';
+import { setCustomText, setCustomTextInput } from 'react-native-global-props';
 import SplashScreen from 'react-native-smart-splash-screen';
+import Router from './app/router';
 
-export default class App extends React.Component<{}> {
-  componentDidMount() {
-      SplashScreen.close({
-          animationType: SplashScreen.animationType.scale,
-          duration: 850,
-          delay: 500
-      });
-  }
+Text.defaultProps.allowFontScaling = false;
+const customTextProps = {
+    style: {
+        fontSize: 16,
+        backgroundColor: 'transparent'
+    }
+};
+const customTextInputProps = {
+    style: {
+        height: 45
+    }
+};
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          App2Sales Template
-        </Text>
-      </View>
-    );
-  }
-}
+setCustomText(customTextProps);
+setCustomTextInput(customTextInputProps);
+const App = () => <Router />;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  }
-});
+export default App;
