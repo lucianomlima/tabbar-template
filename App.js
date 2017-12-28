@@ -10,8 +10,17 @@ import {
   Text,
   View
 } from 'react-native';
+import SplashScreen from 'react-native-smart-splash-screen';
 
 export default class App extends React.Component<{}> {
+  componentDidMount() {
+      SplashScreen.close({
+          animationType: SplashScreen.animationType.scale,
+          duration: 850,
+          delay: 500
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
